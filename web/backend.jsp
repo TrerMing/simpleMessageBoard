@@ -15,7 +15,11 @@
     </head>
     <body>
         <h1>Welcome "${sessionScope.username}"</h1>
-        <h2> Posts </h2>
+        <h2> Posts  <a href="newPost.jsp"> new </a></h2>
+        <c:forEach items="${requestScope.posts}" var="post">
+            <div>${post.body}</div>
+            <div>- ${post.username} on ${post.date}</div>
+        </c:forEach>
         <a href="/HelloWorld/Logout"/>Logout</a>
     </body>
 </html>

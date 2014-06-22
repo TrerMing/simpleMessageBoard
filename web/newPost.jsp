@@ -14,8 +14,8 @@
     <body>
         <a href="backend.jsp"> &Larr; Back to all posts</a> <span>(no save)</span>
         <h1>New Post</h1>
-        <form method="post">
-            <textarea placeholder="Blah Blah Blah Blah blah..." rows="10" cols="50"></textarea><br />
+        <form method="post" action="NewPost">
+            <textarea name="body" placeholder="Blah Blah Blah Blah blah..." rows="10" cols="50"></textarea><br />
             <input type="submit" name="submit" />
         </form>
     </body>
