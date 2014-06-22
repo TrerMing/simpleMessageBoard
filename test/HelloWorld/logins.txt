@@ -1,2 +1,0 @@
-admin | hardPassword
-easy | password

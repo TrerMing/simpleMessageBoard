@@ -38,7 +38,7 @@ public class ValidateLoginServelet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        Authenticater auther = new LoginFile("logins.txt");
+        Authenticater auther = new FileAuth("logins.txt");
 
         if (auther.isValid(username, password)) {
             HttpSession session = request.getSession(true);

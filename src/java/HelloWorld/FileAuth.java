@@ -17,11 +17,11 @@ import java.util.logging.Logger;
  *
  * @author Gage
  */
-public class LoginFile implements Authenticater {
+public class FileAuth implements Authenticater {
 
     public HashMap<String, String> logins;
 
-    public LoginFile(String filename) throws FileNotFoundException, IOException {
+    public FileAuth(String filename) throws FileNotFoundException, IOException {
         logins = new HashMap<>();
         String path = this.getClass().getResource("").getPath();
         BufferedReader reader = new BufferedReader(new FileReader(path + filename));
@@ -36,7 +36,7 @@ public class LoginFile implements Authenticater {
 
     }
 
-    LoginFile() {
+    FileAuth() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

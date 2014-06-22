@@ -19,14 +19,14 @@ public class LoginFileNGTest {
     }
 
     /**
-     * Test of isValid method, of class LoginFile.
+     * Test of isValid method, of class FileAuth.
      */
     @Test
     public void testIsValid() {
         Authenticater auth;
         
         try {
-            auth = new LoginFile("logins.txt");
+            auth = new FileAuth("logins.txt");
             
             assertTrue(auth.isValid("admin", "hardPassword"));
             assertTrue(auth.isValid("easy", "password"));
