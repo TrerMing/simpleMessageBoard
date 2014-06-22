@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gage
  */
 @WebServlet(urlPatterns = {"/Logout"})
-public class Logout extends HttpServlet {
+public class LogoutServelet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

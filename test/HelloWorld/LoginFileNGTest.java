@@ -28,7 +28,9 @@ public class LoginFileNGTest {
         try {
             auth = new LoginFile("logins.txt");
             
+            assertTrue(auth.isValid("admin", "hardPassword"));
             assertTrue(auth.isValid("easy", "password"));
+            
             assertFalse(auth.isValid("easy", "hardPassword"));
             assertFalse(auth.isValid("easy", "WRONG_PASSWORD"));
             assertFalse(auth.isValid("WRONG_USERNAME", "WRONG_PASSWORD"));
