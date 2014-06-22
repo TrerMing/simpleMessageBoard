@@ -55,7 +55,7 @@ public class NewPostServlet extends HttpServlet {
         String path = System.getenv("OPENSHIFT_DATA_DIR");
         
         if (path == null) {
-            path = "";
+            path = this.getClass().getResource("").getPath();
         }
 
         String postPath = path + "posts.txt";

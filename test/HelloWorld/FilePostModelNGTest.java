@@ -32,7 +32,7 @@ public class FilePostModelNGTest {
     public void testGetPosts() {
         try {
             
-            PostModel posts = new FilePostModel("src/testPosts.txt");
+            PostModel posts = new FilePostModel("testPosts.txt");
             ArrayList<Post> postsArray = posts.getPosts();
 
             assertNotNull(postsArray);

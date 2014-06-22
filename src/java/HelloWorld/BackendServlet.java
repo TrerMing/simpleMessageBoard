@@ -37,7 +37,8 @@ public class BackendServlet extends HttpServlet {
         String path = System.getenv("OPENSHIFT_DATA_DIR");
 
         if (path == null) {
-            path = "";
+            path = this.getClass().getResource("").getPath();
+            response.getWriter().write(path);
         }
 
         String postPath = path + "posts.txt";
@@ -47,7 +48,7 @@ public class BackendServlet extends HttpServlet {
         ArrayList<Post> posts = postModel.getPosts();
 
         if (posts != null) {
-            Collections.reverse(posts);
+        //  Collections.reverse(posts);
         }
 
         request.setAttribute("posts", posts);

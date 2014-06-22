@@ -23,7 +23,6 @@ public class FileAuth implements Authenticater {
 
     public FileAuth(String filename) throws FileNotFoundException, IOException {
         logins = new HashMap<>();
-        String env = System.getenv("OPENSHIFT_DATA_DIR");
         
         String path = this.getClass().getResource("").getPath();
         BufferedReader reader = new BufferedReader(new FileReader(path + filename));

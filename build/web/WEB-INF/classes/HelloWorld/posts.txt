@@ -1,0 +1,5 @@
+BEGIN
+easy
+2014/06/22 00:39
+This will work
+END
