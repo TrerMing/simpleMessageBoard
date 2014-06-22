@@ -45,6 +45,7 @@ public class ValidateLoginServelet extends HttpServlet {
 
             session.setAttribute("username", username);
 
+            response.sendRedirect("newPost.jsp");
             
         } else {
 

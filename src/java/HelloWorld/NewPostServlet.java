@@ -51,7 +51,16 @@ public class NewPostServlet extends HttpServlet {
 
         Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        PostModel postModel = new FilePostModel("posts.txt");
+        
+        String path = System.getenv("OPENSHIFT_DATA_DIR");
+        
+        if (path == null) {
+            path = "";
+        }
+
+        String postPath = path + "posts.txt";
+        
+        PostModel postModel = new FilePostModel(postPath);
         
         String body = request.getParameter("body");
         String username = (String) request.getSession().getAttribute("username");
@@ -59,7 +68,7 @@ public class NewPostServlet extends HttpServlet {
         
         postModel.addPost( new Post(username, body, date) );
         
-        response.sendRedirect("backend.jsp");
+        response.sendRedirect("Backend");
         
         
     }

@@ -1,0 +1,11 @@
+BEGIN
+admin
+today
+this is my message
+that has multiple lines
+END
+BEGIN
+easy
+yesterday
+this is a test post
+END

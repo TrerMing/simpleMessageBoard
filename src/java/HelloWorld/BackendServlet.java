@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package HelloWorld;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,16 +33,27 @@ public class BackendServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        PostModel postModel = new FilePostModel("posts.txt");
+
+        String path = System.getenv("OPENSHIFT_DATA_DIR");
+
+        if (path == null) {
+            path = "";
+        }
+
+        String postPath = path + "posts.txt";
+
+        PostModel postModel = new FilePostModel(postPath);
 
         ArrayList<Post> posts = postModel.getPosts();
-        
+
+        if (posts != null) {
+            Collections.reverse(posts);
+        }
+
         request.setAttribute("posts", posts);
 
         request.getRequestDispatcher("backend.jsp").forward(request, response);
-        
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

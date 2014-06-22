@@ -25,8 +25,8 @@ public class FilePostModel implements PostModel {
     String filename;
 
     public FilePostModel(String filename) throws FileNotFoundException, IOException {
-        String path = this.getClass().getResource("").getPath();
-        this.filename = path + filename;
+        
+        this.filename = filename;
 
     }
 
@@ -70,17 +70,14 @@ public class FilePostModel implements PostModel {
                 line = reader.readLine();
             }
 
+            reader.close();
+
         } catch (FileNotFoundException ex) {
             return null;
         } catch (IOException ex) {
             return null;
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FilePostModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+        
         return Posts;
     }
 
@@ -92,17 +89,17 @@ public class FilePostModel implements PostModel {
     @Override
     public void addPost(Post post) {
         try {
-            PrintWriter out = new PrintWriter(
+            try (PrintWriter out = new PrintWriter(
                     new BufferedWriter(
-                            new FileWriter(filename, true))); // The true means append
-            out.println("BEGIN");
-            out.println(post.getUsername());
-            out.println(post.getDate());
-            out.println(post.getBody());
-            out.println("END");
-            
-            out.close();
-            
+                            new FileWriter(filename, true))) // The true means append
+            ) {
+                out.println("BEGIN");
+                out.println(post.getUsername());
+                out.println(post.getDate());
+                out.println(post.getBody());
+                out.println("END");
+            }
+
         } catch (IOException e) {
             throw new Error("File Failed to append");
         }
